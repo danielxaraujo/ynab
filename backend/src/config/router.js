@@ -1,11 +1,18 @@
 const express = require('express')
 const { auth, login, signup, validateToken } = require('../api/auth/authService')
 
+// Transaction Service
+const { getById, getAll, post, put } = require('../api/account/accountService')
+
 /**
  * Rotas seguras
  */
 const api = express.Router()
 api.use(auth)
+api.get('/account/:id', getById)
+api.get('/account', getAll)
+api.post('/account', post)
+api.put('/account/:1', put)
 
 /*
  * Rotas abertas
