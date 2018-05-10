@@ -12,7 +12,7 @@ api.use(auth)
 api.get('/account/:id', getById)
 api.get('/account', getAll)
 api.post('/account', post)
-api.put('/account/:1', put)
+api.put('/account/:id', put)
 
 /*
  * Rotas abertas
