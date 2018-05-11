@@ -11,7 +11,7 @@ class BaseSidebar extends Component {
 					<AppSidebarHeader />
 					<AppSidebarForm />
 					<AppSidebarNav navConfig={navigations} {...this.props} />
-            		<AppSidebarFooter />
+					<AppSidebarFooter />
 					<AppSidebarMinimizer />
 				</AppSidebar>
 			</React.Fragment>

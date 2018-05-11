@@ -16,7 +16,7 @@ class BaseLayout extends Component {
 					<BaseHeader />
 				</AppHeader>
 				<div className='app-body'>
-					<BaseSidebar />
+					<BaseSidebar {...this.props} />
 					<main className='main'>
 						<AppBreadcrumb appRoutes={routes} />
 						<Router />
