@@ -1,23 +1,26 @@
 const express = require('express')
 const { auth, login, signup, validateToken } = require('../api/auth/authService')
 
-// Transaction Service
+const createService = require('../util/createService')
+
+// Services
 const Account = require('../api/account/account')
+const Transaction = require('../api/transaction/transaction')
+
+/*
+ * Rotas abertas
+ */
+const oapi = express.Router()
+oapi.post('/login', login)
+oapi.post('/signup', signup)
+oapi.post('/validateToken', validateToken)
 
 /**
  * Rotas seguras
  */
 const api = express.Router()
 api.use(auth)
+api.use('/account', createService(Account))
+api.use('/transaction', createService(Transaction))
 
-Account.register(api, '/account')
-
-/*
- * Rotas abertas
- */
-const openApi = express.Router()
-openApi.post('/login', login)
-openApi.post('/signup', signup)
-openApi.post('/validateToken', validateToken)
-
-module.exports = { api, openApi }
+module.exports = { api, oapi }

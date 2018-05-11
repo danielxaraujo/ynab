@@ -6,14 +6,14 @@ const server = express()
 
 const port = process.env.PORT || 3000
 const database = require('./config/database')
-const { api, openApi } = require('./config/router')
+const { oapi, api } = require('./config/router')
 
 server.use(bodyParser.urlencoded({ extended: true }))
 server.use(bodyParser.json())
 server.use(allowCors())
 server.use(queryParser())
 
-server.use('/oapi', openApi)
+server.use('/', oapi)
 server.use('/api', api)
 
 server.listen(port, () => {

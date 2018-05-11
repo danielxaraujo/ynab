@@ -6,6 +6,7 @@ const transactionSchema = new mongoose.Schema({
 		type: String,
 		min: 12,
 		max: 12,
+		unique: true,
 		required: true
 	},
 	memo: {
@@ -25,19 +26,18 @@ const transactionSchema = new mongoose.Schema({
 			'NONE'
 		],
 		default: 'NONE',
-		required: true
+		required: false
 	},
 	payee: {
 		type: String,
-		required: true
+		required: false
 	},
 	category: {
 		type: String,
-		required: true
+		required: false
 	},
 	value: {
 		type: Number,
-		default: 0,
 		required: true
 	},
 	date: {
@@ -48,7 +48,7 @@ const transactionSchema = new mongoose.Schema({
 	cleared: {
 		type: Boolean,
 		default: false,
-		required: true
+		required: false
 	}
 })
 
