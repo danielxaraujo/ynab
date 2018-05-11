@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const model = require('../../util/modelService')
 
 const accountSchema = new mongoose.Schema({
 	name: {
@@ -33,4 +34,4 @@ const accountSchema = new mongoose.Schema({
 	}
 })
 
-module.exports = mongoose.model('Account', accountSchema)
+module.exports = model('Account', accountSchema)

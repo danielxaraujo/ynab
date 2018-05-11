@@ -12,7 +12,6 @@
 		"jsonwebtoken": "^8.2.1",
 		"mongoose": "^5.0.17",
 		"mongoose-paginate": "^5.0.3",
-		"node-restful": "^0.2.6",
 		"pm2": "^2.10.3"
 	},
 	"devDependencies": {

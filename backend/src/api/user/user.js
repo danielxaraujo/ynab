@@ -1,5 +1,5 @@
-const restful = require('node-restful')
-const mongoose = restful.mongoose
+const mongoose = require('mongoose')
+const model = require('../../util/modelService')
 
 const userSchema = new mongoose.Schema({
 	name: {
@@ -18,4 +18,4 @@ const userSchema = new mongoose.Schema({
 	}
 })
 
-module.exports = restful.model('User', userSchema)
+module.exports = model('User', userSchema)

@@ -1,7 +1,7 @@
-const restful = require('node-restful')
-const mongoose = restful.mongoose
+const mongoose = require('mongoose')
+const model = require('../../util/modelService')
 
-const TransactionSchema = new mongoose.Schema({
+const transactionSchema = new mongoose.Schema({
 	check: {
 		type: String,
 		min: 12,
@@ -52,5 +52,4 @@ const TransactionSchema = new mongoose.Schema({
 	}
 })
 
-const Transaction = restful.model('Transaction', TransactionSchema)
-module.exports = Transaction
+module.exports = model('Transaction', transactionSchema)
