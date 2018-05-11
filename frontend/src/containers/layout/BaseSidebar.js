@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { AppSidebar, AppSidebarNav, AppSidebarMinimizer } from '@coreui/react'
+import { AppSidebar, AppSidebarHeader, AppSidebarForm, AppSidebarNav, AppSidebarFooter, AppSidebarMinimizer } from '@coreui/react'
 
 import navigations from '../../Navigations';
 
@@ -8,7 +8,10 @@ class BaseSidebar extends Component {
 		return (
 			<React.Fragment>
 				<AppSidebar fixed display='lg'>
+					<AppSidebarHeader />
+					<AppSidebarForm />
 					<AppSidebarNav navConfig={navigations} {...this.props} />
+            		<AppSidebarFooter />
 					<AppSidebarMinimizer />
 				</AppSidebar>
 			</React.Fragment>
