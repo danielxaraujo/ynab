@@ -9,21 +9,9 @@ const Navigations = {
 		}
 	}, {
 		name: 'Accounts',
-		url: '/account/all',
-		icon: 'fas fa-university',
-		children: [
-			{
-				name: 'Conta Corrent BB',
-				url: '/account/1',
-				icon: 'fas fa-money-check',
-			}, {
-				name: 'Cartão Crédito BB',
-				url: '/account/1',
-				icon: 'fas fas fa-credit-card',
-			}
-		]
-	}
-	]
+		url: '/account',
+		icon: 'fas fa-university'
+	}]
 }
 
 export default Navigations

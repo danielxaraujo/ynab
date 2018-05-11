@@ -2,11 +2,12 @@ import React, { Component } from 'react'
 import { Redirect, Route, Switch } from 'react-router-dom'
 
 import { BaseLayout } from './containers';
-import { Dashboard } from './views';
+import { Dashboard, Account } from './views';
 
 const routes = [
 	{ path: '/', exact: true, name: 'Home', component: BaseLayout },
-	{ path: '/dashboard', name: 'Dashboard', component: Dashboard }
+	{ path: '/dashboard', name: 'Dashboard', component: Dashboard },
+	{ path: '/account', name: 'Account', component: Account }
 ];
 
 class Router extends Component {

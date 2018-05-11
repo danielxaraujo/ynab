@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Container } from 'reactstrap'
 import { AppHeader, AppBreadcrumb, AppFooter } from '@coreui/react'
 
 import { Router, routes } from '../../Router'
@@ -20,9 +19,7 @@ class BaseLayout extends Component {
 					<BaseSidebar />
 					<main className='main'>
 						<AppBreadcrumb appRoutes={routes} />
-						<Container fluid>
-							<Router />
-						</Container>
+						<Router />
 					</main>
 				</div>
 				<AppFooter>

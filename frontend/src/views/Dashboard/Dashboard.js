@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
+import { Container } from 'reactstrap'
 
 class Dashboard extends Component {
 	render() {
 		return (
-			<div className='animated fadeIn'>
-			</div>
+			<Container fluid>
+				<div className='animated fadeIn'>
+				</div>
+			</Container>
 		)
 	}
 }

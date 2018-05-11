@@ -1,3 +1,4 @@
-import Dashboard from './Dashboard/Dashboard'
+import Dashboard from './dashboard/Dashboard'
+import Account from './account/Account'
 
-export { Dashboard }
+export { Dashboard, Account }
