@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
 import { BaseLayout } from './containers'
 
@@ -16,11 +16,11 @@ import '@fortawesome/fontawesome-free-solid'
 class App extends Component {
 	render() {
 		return (
-			<BrowserRouter>
+			<Router>
 				<Switch>
 					<Route path='/' name='Home' component={BaseLayout} />
 				</Switch>
-			</BrowserRouter>
+			</Router>
 		)
 	}
 }

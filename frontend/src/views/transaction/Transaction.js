@@ -8,7 +8,7 @@ import { Container, Card, CardBody, Table, ButtonGroup, Button } from 'reactstra
 const TOKEN = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YWY0ZjczMmE2NTUxMTI5NTY2NmFhMmYiLCJuYW1lIjoiRGFuaWVsIFhhdmllciBBcmHDumpvIiwiZW1haWwiOiJkYW5pZWx4YXJhdWpvQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiJDJhJDEwJGNPVWE5ekxJZEZuSk56UU14NWEuSWUwUlI0ZUg5L1FHWVdPMkJkSUM5cWMvREpteW5lR1BHIiwiX192IjowLCJpYXQiOjE1MjYyMjY0OTgsImV4cCI6MTUyNjMxMjg5OH0.M6nKK0NTOx0Q94Eh9V2XtCVfz545Ywg00iTZQrYt4kA'
 const URL = 'http://127.0.0.1:3000/api/account'
 
-class Account extends Component {
+class Transaction extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
@@ -35,7 +35,7 @@ class Account extends Component {
 						<Table responsive striped bordered={false}>
 							<thead>
 								<tr>
-									<th>Icon</th>
+									<th>Icon2</th>
 									<th>Name</th>
 									<th>Type</th>
 									<th>Budget</th>
@@ -72,4 +72,4 @@ class Account extends Component {
 	}
 }
 
-export default Account
+export default Transaction
