@@ -21,13 +21,13 @@ class Sidebar extends Component {
 				badget.children.push({
 					name: account.name,
 					url: `/account/${account._id}`,
-					icon: account.icon,
+					icon: `${account.icon} ${account.color}`
 				})
 			} else {
 				offBudget.children.push({
 					name: account.name,
 					url: `/account/${account._id}`,
-					icon: account.icon,
+					icon: `${account.icon} ${account.color}`
 				})
 			}
 		})

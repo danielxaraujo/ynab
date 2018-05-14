@@ -7,6 +7,7 @@ import { Login } from './views'
 // Styles
 import '@coreui/coreui/dist/css/bootstrap.min.css'
 import '@coreui/coreui/dist/css/coreui.min.css'
+import './App.css'
 
 // Font Awsome
 import '@fortawesome/fontawesome'

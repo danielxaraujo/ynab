@@ -6,8 +6,7 @@ export default class AuthService {
 		this.domain = domain
 		this.fetch = this.fetch.bind(this)
 		this.login = this.login.bind(this)
-		this.loggedIn = this.loggedIn.bind(this)
-		this.getAuthenticatedUser = this.getAuthenticatedUser.bind(this)
+		this.logout = this.logout.bind(this)
 	}
 
 	login(username, password) {
@@ -30,7 +29,7 @@ export default class AuthService {
 			const decoded = decode(token);
 			return (decoded.exp < Date.now() / 1000) ? true : false
 		} catch (err) {
-			return false;
+			return true;
 		}
 	}
 
@@ -43,7 +42,7 @@ export default class AuthService {
 	}
 
 	logout() {
-		localStorage.removeItem('id_token');
+		localStorage.removeItem('jwt_token');
 	}
 
 	getAuthenticatedUser() {
@@ -52,7 +51,6 @@ export default class AuthService {
 
 	fetch(url, options) {
 
-		console.log(url)
 		const headers = { 'Accept': 'application/json', 'Content-Type': 'application/json' }
 		if (this.loggedIn()) {
 			headers['Authorization'] = 'Bearer ' + this.getToken()
@@ -66,6 +64,10 @@ export default class AuthService {
 	checkStatus(response) {
 		if (response.status >= 200 && response.status < 300) {
 			return response
+		} else {
+			var error = new Error(response.statusText)
+			error.response = response
+			throw error
 		}
 	}
 }

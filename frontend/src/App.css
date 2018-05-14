@@ -1,0 +1,47 @@
+ .success {
+ 	color: #4dbd74 !important
+ }
+
+ .nav-link:hover .success {
+ 	color: white !important
+ }
+
+ .nav-link.active .success {
+ 	color: #20a8d8 !important
+ }
+
+ .nav-link.active:hover .success {
+ 	color: white !important
+ }
+
+ .warning {
+ 	color: #ffc107 !important
+ }
+
+ .nav-link:hover .warning {
+ 	color: white !important
+ }
+
+ .nav-link.active .warning {
+ 	color: #20a8d8 !important
+ }
+
+ .nav-link.active:hover .warning {
+ 	color: white !important
+ }
+
+ .danger {
+ 	color: #f86c6b !important
+ }
+
+ .nav-link:hover .danger {
+ 	color: white !important
+ }
+
+ .nav-link.active .danger {
+ 	color: #20a8d8 !important
+ }
+
+ .nav-link.active:hover .danger {
+ 	color: white !important
+ }

@@ -14,7 +14,7 @@ class FullLayout extends Component {
 		return (
 			<div className='app'>
 				<AppHeader fixed>
-					<Header />
+					<Header {...this.props} />
 				</AppHeader>
 				<div className='app-body'>
 					<Sidebar {...this.props} />

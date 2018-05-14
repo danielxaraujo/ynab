@@ -11,9 +11,7 @@ class Account extends Component {
 		this.state = { accounts: [] }
 	}
 	componentDidMount() {
-		this.props.fetch('api/account').then(json => (
-			this.setState({ accounts: json.data })
-		))
+		this.props.fetch('api/account').then(json => this.setState({ accounts: json.data }))
 	}
 	render() {
 		return (
@@ -33,11 +31,11 @@ class Account extends Component {
 							<tbody>
 								{this.state.accounts.map((account, idx) => {
 									return (
-										<tr id={idx}>
-											<td><i className={`${account.icon} fa-lg fa-fw`}></i></td>
+										<tr key={idx}>
+											<td><i className={`${account.icon} ${account.color} fa-lg fa-fw`}></i></td>
 											<td>{account.name}</td>
 											<td>{account.type}</td>
-											<td><Switch checked={account.budget} height={20} width={40} /></td>
+											<td><Switch checked={account.budget} onChange={() => { }} height={20} width={40} /></td>
 											<td>
 												<ButtonGroup>
 													<Button size='sm' color='success'>

@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 
-import { Badge, Nav, NavItem, NavLink } from 'reactstrap'
+import { Nav, NavItem, NavLink } from 'reactstrap'
 import { AppNavbarBrand, AppSidebarToggler } from '@coreui/react'
 
 import logo from '../assets/img/brand/logo.svg'
 import sygnet from '../assets/img/brand/sygnet.svg'
 
-class BaseHeader extends Component {
+class Header extends Component {
 	render() {
 		return (
 			<React.Fragment>
@@ -23,7 +23,7 @@ class BaseHeader extends Component {
 				</Nav>
 				<Nav className='ml-auto' navbar>
 					<NavItem className='d-md-down-none'>
-						<NavLink href='#'><i className='fa fa-bell'></i><Badge pill color='danger'>5</Badge></NavLink>
+						<NavLink href='' onClick={() => this.props.logout()}>Logout</NavLink>
 					</NavItem>
 				</Nav>
 			</React.Fragment>
@@ -31,4 +31,4 @@ class BaseHeader extends Component {
 	}
 }
 
-export default BaseHeader
+export default Header
