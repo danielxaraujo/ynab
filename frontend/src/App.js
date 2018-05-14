@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
-import { BaseLayout } from './containers'
+import FullLayout from './layout/fullLayout'
+import { Login } from './views'
 
 // Styles
-import 'bootstrap/dist/css/bootstrap.min.css'
+import '@coreui/coreui/dist/css/bootstrap.min.css'
 import '@coreui/coreui/dist/css/coreui.min.css'
 
 // Font Awsome
@@ -18,7 +19,8 @@ class App extends Component {
 		return (
 			<Router>
 				<Switch>
-					<Route path='/' name='Home' component={BaseLayout} />
+					<Route path='/login' name='Login' component={Login} />
+					<Route path='/' name='Home' component={FullLayout} />
 				</Switch>
 			</Router>
 		)

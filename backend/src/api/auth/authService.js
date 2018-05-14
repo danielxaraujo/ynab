@@ -34,10 +34,12 @@ const auth = (req, res, next) => {
 
 const login = (req, res) => {
 
-	const email = req.body.email || ''
+	const username = req.body.username || ''
 	const password = req.body.password || ''
 
-	User.findOne({ email }, (err, user) => {
+	console.log(`username: ${username}, password: ${password}`)
+
+	User.findOne({ email: username }, (err, user) => {
 		if (err) {
 			console.log(err)
 		} else if (user && bcrypt.compareSync(password, user.password)) {

@@ -3,8 +3,8 @@ import React, { Component } from 'react'
 import { Badge, Nav, NavItem, NavLink } from 'reactstrap'
 import { AppNavbarBrand, AppSidebarToggler } from '@coreui/react'
 
-import logo from '../../assets/img/brand/logo.svg'
-import sygnet from '../../assets/img/brand/sygnet.svg'
+import logo from '../assets/img/brand/logo.svg'
+import sygnet from '../assets/img/brand/sygnet.svg'
 
 class BaseHeader extends Component {
 	render() {

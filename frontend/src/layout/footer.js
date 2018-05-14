@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-class BaseFooter extends Component {
+class Footer extends Component {
 	render() {
 		return (
 			<React.Fragment>
@@ -11,4 +11,4 @@ class BaseFooter extends Component {
 	}
 }
 
-export default BaseFooter
+export default Footer

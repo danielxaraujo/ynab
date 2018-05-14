@@ -8,9 +8,9 @@ const port = process.env.PORT || 3000
 const database = require('./config/database')
 const { oapi, api } = require('./config/router')
 
+server.use(allowCors())
 server.use(bodyParser.urlencoded({ extended: true }))
 server.use(bodyParser.json())
-server.use(allowCors())
 server.use(queryParser())
 
 server.use('/', oapi)

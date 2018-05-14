@@ -5,29 +5,17 @@ import { Container, Card, CardBody, Table, ButtonGroup, Button } from 'reactstra
 // Container style={{ backgroundColor: 'white', padding: '0px' }}
 //Table  style={{ margin: '0px' }}
 
-const TOKEN = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YWY0ZjczMmE2NTUxMTI5NTY2NmFhMmYiLCJuYW1lIjoiRGFuaWVsIFhhdmllciBBcmHDumpvIiwiZW1haWwiOiJkYW5pZWx4YXJhdWpvQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiJDJhJDEwJGNPVWE5ekxJZEZuSk56UU14NWEuSWUwUlI0ZUg5L1FHWVdPMkJkSUM5cWMvREpteW5lR1BHIiwiX192IjowLCJpYXQiOjE1MjYyMjY0OTgsImV4cCI6MTUyNjMxMjg5OH0.M6nKK0NTOx0Q94Eh9V2XtCVfz545Ywg00iTZQrYt4kA'
-const URL = 'http://127.0.0.1:3000/api/account'
-
 class Account extends Component {
 	constructor(props) {
 		super(props)
-		this.state = {
-			accounts: []
-		};
+		this.state = { accounts: [] }
 	}
 	componentDidMount() {
-		fetch(URL, {
-			headers: new Headers({
-				'Authorization': `Bearer ${TOKEN}`
-			})
-		}).then(response => (
-			response.json()
-		)).then(json => (
+		this.props.fetch('api/account').then(json => (
 			this.setState({ accounts: json.data })
 		))
 	}
 	render() {
-		let accounts = this.state.accounts
 		return (
 			<Container fluid>
 				<Card>
@@ -43,7 +31,7 @@ class Account extends Component {
 								</tr>
 							</thead>
 							<tbody>
-								{accounts.map((account, idx) => {
+								{this.state.accounts.map((account, idx) => {
 									return (
 										<tr id={idx}>
 											<td><i className={`${account.icon} fa-lg fa-fw`}></i></td>
