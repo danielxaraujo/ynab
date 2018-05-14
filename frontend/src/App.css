@@ -1,47 +1,78 @@
- .success {
- 	color: #4dbd74 !important
- }
+.app-main,
+.app-container {
+	background-color: #BFCFD4
+}
 
- .nav-link:hover .success {
- 	color: white !important
- }
+.app-card {
+	border-radius: 1rem !important
+}
 
- .nav-link.active .success {
- 	color: #20a8d8 !important
- }
+.app-card-body,
+.app-card-table {
+	padding: 0px !important;
+	margin: 0px !important;
+}
 
- .nav-link.active:hover .success {
- 	color: white !important
- }
+.app-card-table thead th {
+	border-top: none !important;
+}
 
- .warning {
- 	color: #ffc107 !important
- }
+.app-card-header {
+	border-radius: 1rem 1rem 0rem 0rem !important
+}
 
- .nav-link:hover .warning {
- 	color: white !important
- }
+.app-card-footer {
+	border-radius: 0rem 0rem 1rem 1rem !important
+}
 
- .nav-link.active .warning {
- 	color: #20a8d8 !important
- }
+.btn-label {
+	padding-left: 5px !important
+}
 
- .nav-link.active:hover .warning {
- 	color: white !important
- }
+.success {
+	color: #4dbd74 !important
+}
 
- .danger {
- 	color: #f86c6b !important
- }
+.nav-link:hover .success {
+	color: white !important
+}
 
- .nav-link:hover .danger {
- 	color: white !important
- }
+.nav-link.active .success {
+	color: #20a8d8 !important
+}
 
- .nav-link.active .danger {
- 	color: #20a8d8 !important
- }
+.nav-link.active:hover .success {
+	color: white !important
+}
 
- .nav-link.active:hover .danger {
- 	color: white !important
- }
+.warning {
+	color: #ffc107 !important
+}
+
+.nav-link:hover .warning {
+	color: white !important
+}
+
+.nav-link.active .warning {
+	color: #20a8d8 !important
+}
+
+.nav-link.active:hover .warning {
+	color: white !important
+}
+
+.danger {
+	color: #f86c6b !important
+}
+
+.nav-link:hover .danger {
+	color: white !important
+}
+
+.nav-link.active .danger {
+	color: #20a8d8 !important
+}
+
+.nav-link.active:hover .danger {
+	color: white !important
+}
