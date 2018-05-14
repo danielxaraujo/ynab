@@ -31,6 +31,26 @@ const accountSchema = new mongoose.Schema({
 	budget: {
 		type: Boolean,
 		required: true
+	},
+	icon: {
+		type: String,
+		required: true,
+		default: 'fas fa-tag'
+	},
+	color: {
+		type: String,
+		lowercase: true,
+		enum: [
+			'primary',
+			'secondary',
+			'success',
+			'danger',
+			'warning',
+			'info',
+			''
+		],
+		required: true,
+		default: ''
 	}
 })
 
