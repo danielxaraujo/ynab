@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
-import Switch from 'react-switch'
+import { AppSwitch } from '@coreui/react'
 import { Card, CardHeader, CardBody, CardFooter, Table, ButtonGroup, Button } from 'reactstrap'
-import AuthService from '../../components/authService'
-
-const authService = new AuthService('http://127.0.0.1:3000');
 
 class AccountList extends Component {
 	constructor(props) {
@@ -17,13 +14,12 @@ class AccountList extends Component {
 		this.search()
 	}
 	search() {
-		authService.fetch('api/account').then(json => this.setState({ accounts: json.data }))
+		this.props.fetch('api/account').then(json => this.setState({ accounts: json.data }))
 	}
 	create() {
 		this.props.history.push('/account/create')
 	}
 	update(account) {
-		console.log(account)
 		this.props.history.push('/account/update', { account: account })
 	}
 	render() {
@@ -53,7 +49,7 @@ class AccountList extends Component {
 										<td><i className={`${account.icon} ${account.color} fa-lg`}></i></td>
 										<td>{account.name}</td>
 										<td>{account.type}</td>
-										<td><Switch checked={account.budget} onChange={() => { }} onColor={'#4dbd74'} height={20} width={40} /></td>
+										<td><AppSwitch label disabled checked={!!account.budget} color={'success'} onChange={() => { }} /></td>
 										<td>
 											<ButtonGroup>
 												<Button size='sm' color='success' onClick={() => this.update(account)}>

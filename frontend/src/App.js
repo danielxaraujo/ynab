@@ -7,6 +7,8 @@ import { Login } from './views'
 // Styles
 import '@coreui/coreui/dist/css/bootstrap.min.css'
 import '@coreui/coreui/dist/css/coreui.min.css'
+//import "react-datepicker/dist/react-datepicker.css";
+import 'react-select/dist/react-select.css';
 import './App.css'
 
 // Font Awsome
