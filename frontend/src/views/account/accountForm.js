@@ -21,6 +21,7 @@ class AccountForm extends Component {
 		this.state = { account: {} }
 		this.handleChange = this.handleChange.bind(this)
 		this.handleTypeChange = this.handleTypeChange.bind(this)
+		this.handleColorChange = this.handleColorChange.bind(this)
 		this.handleIconChange = this.handleIconChange.bind(this)
 		this.handleSubmit = this.handleSubmit.bind(this)
 	}
@@ -42,11 +43,10 @@ class AccountForm extends Component {
 		this.setState({ account: { ...this.state.account, type: option.value } });
 	}
 	handleIconChange(option) {
-		if (option) {
-			this.setState({ account: { ...this.state.account, icon: option.value } });
-		} else {
-			this.setState({ account: { ...this.state.account, icon: null } });
-		}
+		this.setState({ account: { ...this.state.account, icon: option.value } });
+	}
+	handleColorChange(option) {
+		this.setState({ account: { ...this.state.account, color: option.value } });
 	}
 	handleSubmit(event) {
 		event.preventDefault();
@@ -61,14 +61,21 @@ class AccountForm extends Component {
 					<Form className='form-horizontal' onSubmit={this.handleSubmit}>
 						<FormGroup row>
 							<Col xs="6" md="2">
-								<Label>Icone</Label>
+								<Label>Icone e Cor</Label>
+							</Col>
+							<Col xs="6" md="2">
+								<Select value={this.state.account.color} onChange={this.handleColorChange} options={[
+									{ value: 'success', label: <Icon icon={'fas fa-square text-success'} /> },
+									{ value: 'danger', label: <Icon icon={'fas fa-square text-danger'} /> },
+									{ value: 'warning', label: <Icon icon={'fas fa-square text-warning'} /> }
+								]} clearable={false} />
 							</Col>
 							<Col xs="6" md="2">
 								<Select value={this.state.account.icon} onChange={this.handleIconChange} options={[
 									{ value: 'fas fa-money-check', label: <Icon icon={'fas fa-money-check'} /> },
 									{ value: 'fas fa-credit-card', label: <Icon icon={'fas fa-credit-card'} /> },
 									{ value: 'fas fa-piggy-bank', label: <Icon icon={'fas fa-piggy-bank'} /> }
-								]} />
+								]} clearable={false} />
 							</Col>
 						</FormGroup>
 						<FormGroup row>
