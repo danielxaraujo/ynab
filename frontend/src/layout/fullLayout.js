@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
+import { Redirect, Route, Switch } from 'react-router-dom'
 import { AppHeader, AppFooter } from '@coreui/react'
 
-import { Router, routes } from '../router'
+import routes from '../router'
 
 import Header from './header'
 import Sidebar from './sidebar'
@@ -20,7 +21,14 @@ class FullLayout extends Component {
 					<Sidebar {...this.props} />
 					<main className='main'>
 						<Breadcrumb appRoutes={routes} />
-						<Router {...this.props} />
+						<Switch>
+							{routes.map((route, idx) => {
+								return route.component ? (<Route key={idx} path={route.path} exact={route.exact} name={route.name} render={props => (
+									<route.component {...this.props} />
+								)} />) : (null);
+							})}
+							<Redirect from="/" to="/dashboard" />
+						</Switch>
 					</main>
 				</div>
 				<AppFooter>

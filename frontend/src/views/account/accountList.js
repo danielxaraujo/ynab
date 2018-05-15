@@ -17,10 +17,7 @@ class AccountList extends Component {
 		this.search()
 	}
 	search() {
-		const el = document.getElementById('search').classList
-		el.toggle('fa-spin')
 		authService.fetch('api/account').then(json => this.setState({ accounts: json.data }))
-		el.toggle('fa-spin')
 	}
 	create() {
 		this.props.history.push('/account/create')
@@ -73,8 +70,8 @@ class AccountList extends Component {
 						</tbody>
 					</Table>
 				</CardBody>
-				<CardFooter className='app-card-footer'>
-					<Button color='success' onClick={this.create}>
+				<CardFooter className='app-card-footer d-flex flex-row-reverse'>
+					<Button color='success' size='sm' onClick={this.create}>
 						<i className='fas fa-plus-circle'></i>
 						<span className='btn-label'>Adicionar</span>
 					</Button>

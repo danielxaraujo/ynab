@@ -1,31 +1,32 @@
-import React, { Component } from 'react'
-import { Redirect, Route, Switch } from 'react-router-dom'
+import React from 'react'
+import Loadable from 'react-loadable'
 
 import FullLayout from './layout/fullLayout';
-import { Dashboard, Account, Transaction } from './views';
+
+function Loading() {
+	return <div>Loading...</div>;
+}
+
+const Dashboard = Loadable({
+	loader: () => import('./views/dashboard/dashboard'),
+	loading: Loading,
+});
+
+const Account = Loadable({
+	loader: () => import('./views/account/account'),
+	loading: Loading,
+});
+
+const Transaction = Loadable({
+	loader: () => import('./views/transaction/transaction'),
+	loading: Loading,
+});
 
 const routes = [
 	{ path: '/', exact: true, name: 'Home', component: FullLayout },
 	{ path: '/dashboard', name: 'Dashboard', component: Dashboard },
 	{ path: '/account', name: 'Account', component: Account },
-	{ path: '/transaction/:accountId', name: 'Transactions', component: Transaction },
+	{ path: '/transaction/:accountId', name: 'Transactions', component: Transaction }
 ];
 
-class Router extends Component {
-	render() {
-		return (
-			<React.Fragment>
-				<Switch>
-					{routes.map((route, idx) => {
-						return route.component ? (<Route key={idx} path={route.path} exact={route.exact} name={route.name} render={props => (
-							<route.component {...this.props} />
-						)} />) : (null);
-					})}
-					<Redirect from="/" to="/dashboard" />
-				</Switch>
-			</React.Fragment>
-		)
-	}
-}
-
-export { Router, routes };
+export default routes
