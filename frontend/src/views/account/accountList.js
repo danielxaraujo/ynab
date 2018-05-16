@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { AppSwitch } from '@coreui/react'
 import { Card, CardHeader, CardBody, CardFooter, Table, ButtonGroup, Button } from 'reactstrap'
+import Swal from 'sweetalert2'
 
 class AccountList extends Component {
 	constructor(props) {
@@ -9,6 +10,8 @@ class AccountList extends Component {
 		this.search = this.search.bind(this)
 		this.create = this.create.bind(this)
 		this.update = this.update.bind(this)
+		this.delete = this.delete.bind(this)
+		this.prepareDelete = this.prepareDelete.bind(this)
 	}
 	componentDidMount() {
 		this.search()
@@ -21,6 +24,30 @@ class AccountList extends Component {
 	}
 	update(account) {
 		this.props.history.push('/account/update', { account: account })
+	}
+	prepareDelete(account) {
+		Swal({
+			title: 'Você tem certeza?',
+			text: 'Depois de deletado, você não poderá recupear os dados da conta!',
+			type: 'warning',
+			showConfirmButton: true,
+			showCancelButton: true
+		}).then((willDelete) => {
+			if (willDelete.value) {
+				this.delete(account)
+			} else {
+				Swal('A operação foi cancelada!', '', 'error');
+			}
+		});
+	}
+	delete(account) {
+		var url = `api/account/${account._id}`
+		var method = 'DELETE'
+		this.props.fetch(url, { method: method }).then(json => {
+			this.search()
+			Swal('Conta removida com sucesso!', '', 'success');
+		}).catch(err => Swal('Oops...', JSON.stringify(this.state.account), 'error'))
+
 	}
 	render() {
 		return (
@@ -49,13 +76,13 @@ class AccountList extends Component {
 										<td><i className={`${account.icon} ${account.color} fa-lg`}></i></td>
 										<td>{account.name}</td>
 										<td>{account.type}</td>
-										<td><AppSwitch label disabled checked={!!account.budget} color={'success'} onChange={() => { }} /></td>
+										<td><AppSwitch label color={'success'} checked={!!account.budget} disabled /></td>
 										<td>
 											<ButtonGroup>
 												<Button size='sm' color='success' onClick={() => this.update(account)}>
 													<i className={'fas fa-edit'}></i>
 												</Button>
-												<Button size='sm' color='danger'>
+												<Button size='sm' color='danger' onClick={() => this.prepareDelete(account)}>
 													<i className={'fas fa-trash-alt'}></i>
 												</Button>
 											</ButtonGroup>

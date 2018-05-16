@@ -11,11 +11,11 @@ const accountSchema = new mongoose.Schema({
 	},
 	date: {
 		type: Date,
-		required: true
+		required: false
 	},
 	balance: {
 		type: Number,
-		required: true
+		required: false
 	},
 	type: {
 		type: String,
@@ -46,8 +46,7 @@ const accountSchema = new mongoose.Schema({
 			'success',
 			'danger',
 			'warning',
-			'info',
-			''
+			'info'
 		],
 		required: true,
 		default: ''

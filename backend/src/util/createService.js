@@ -36,6 +36,7 @@ const createService = (model) => {
 
 	const respondOrErr = (res, next, errStatusCode, err, statusCode, data) => {
 		if (err) {
+			console.log(err)
 			err.statusCode = errStatusCode
 			next(err)
 		} else {
