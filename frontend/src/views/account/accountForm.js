@@ -3,18 +3,16 @@ import { Col, Card, CardHeader, CardBody, CardFooter, Form, FormGroup, FormText,
 import { AppSwitch } from '@coreui/react'
 import Select from 'react-select';
 
-class Icon extends Component {
-	constructor(props) {
-		super(props)
-		this.state = { icon: props.icon }
-	}
-	componentWillReceiveProps(props) {
-		this.setState({ icon: props.icon })
-	}
-	render() {
-		return <span key={this.state.icon}><i className={this.state.icon}></i></span>
-	}
+const IconOption = (props) => {
+	return <div key={props.children} {...props.innerProps}><i className={props.children}></i></div>
 }
+
+const colorOptions = [
+	{ value: 'success', label: 'fas fa-square fa-lg text-success' },
+	{ value: 'danger', label: 'fas fa-square fa-lg text-danger' },
+	{ value: 'warning', label: 'fas fa-square fa-lg text-warning' }
+]
+
 class AccountForm extends Component {
 	constructor(props) {
 		super(props)
@@ -48,10 +46,14 @@ class AccountForm extends Component {
 	handleColorChange(option) {
 		this.setState({ account: { ...this.state.account, color: option.value } });
 	}
+	converToObject(value, options) {
+		return options.find(option => option.value == value)
+	}
 	handleSubmit(event) {
 		event.preventDefault();
 	}
 	render() {
+		const { account } = this.state
 		return (
 			<Card className='app-card'>
 				<CardHeader className='app-card-header'>
@@ -63,19 +65,20 @@ class AccountForm extends Component {
 							<Col xs="6" md="2">
 								<Label>Icone e Cor</Label>
 							</Col>
-							<Col xs="6" md="2">
-								<Select value={this.state.account.color} onChange={this.handleColorChange} options={[
-									{ value: 'success', label: <Icon icon={'fas fa-square text-success'} /> },
-									{ value: 'danger', label: <Icon icon={'fas fa-square text-danger'} /> },
-									{ value: 'warning', label: <Icon icon={'fas fa-square text-warning'} /> }
-								]} clearable={false} />
+							<Col xs="6" md="4">
+								<Select name='color'
+									value={this.converToObject(account.color, colorOptions)}
+									onChange={this.handleColorChange}
+									options={colorOptions}
+									components={{ Option: IconOption, SingleValue: IconOption }}
+								/>
 							</Col>
-							<Col xs="6" md="2">
-								<Select value={this.state.account.icon} onChange={this.handleIconChange} options={[
-									{ value: 'fas fa-money-check', label: <Icon icon={'fas fa-money-check'} /> },
-									{ value: 'fas fa-credit-card', label: <Icon icon={'fas fa-credit-card'} /> },
-									{ value: 'fas fa-piggy-bank', label: <Icon icon={'fas fa-piggy-bank'} /> }
-								]} clearable={false} />
+							<Col xs="6" md="4">
+								<Select name='icon' value={account.icon} onChange={this.handleIconChange} options={[
+									{ value: 'fas fa-money-check', label: 'fas fa-money-check fa-lg' },
+									{ value: 'fas fa-credit-card', label: 'fas fa-credit-card fa-lg' },
+									{ value: 'fas fa-piggy-bank', label: 'fas fa-piggy-bank fa-lg' }
+								]} components={{ Option: IconOption, SingleValue: IconOption }} />
 							</Col>
 						</FormGroup>
 						<FormGroup row>
@@ -84,7 +87,7 @@ class AccountForm extends Component {
 							</Col>
 							<Col xs="12" md="10">
 								<InputGroup className='input-prepend'>
-									<Input name='name' type='text' value={this.state.account.name || ''} onChange={this.handleChange} placeholder='Nome da Conta' />
+									<Input name='name' type='text' value={account.name || ''} onChange={this.handleChange} placeholder='Nome da Conta' />
 									<InputGroupAddon addonType='append'>
 										<InputGroupText>@</InputGroupText>
 									</InputGroupAddon>
@@ -96,7 +99,7 @@ class AccountForm extends Component {
 								<Label>Tipo</Label>
 							</Col>
 							<Col xs="12" md="10">
-								<Select value={this.state.account.type} onChange={this.handleTypeChange} options={[
+								<Select name='type' onChange={this.handleTypeChange} options={[
 									{ value: 'CHECKING', label: 'Conta Corrente' },
 									{ value: 'CREDCARD', label: 'Cartão de Crédito' },
 									{ value: 'SAVINGS', label: 'Poupança' },
@@ -110,7 +113,7 @@ class AccountForm extends Component {
 							</Col>
 							<Col xs="12" md="10">
 								<InputGroup className='input-prepend'>
-									<Input name='date' type='text' value={this.state.account.date || ''} onChange={this.handleChange} placeholder='99/99/9999' />
+									<Input name='date' type='text' value={account.date || ''} onChange={this.handleChange} placeholder='99/99/9999' />
 									<InputGroupAddon addonType='append'>
 										<InputGroupText><i className='far fa-calendar-alt'></i></InputGroupText>
 									</InputGroupAddon>
@@ -123,7 +126,7 @@ class AccountForm extends Component {
 							</Col>
 							<Col xs="12" md="10">
 								<InputGroup className='input-prepend'>
-									<Input name='balance' type='text' value={this.state.account.balance || ''} onChange={this.handleChange} placeholder='Valor do Saldo Inicial' />
+									<Input name='balance' type='text' value={account.balance || ''} onChange={this.handleChange} placeholder='Valor do Saldo Inicial' />
 									<InputGroupAddon addonType='append'>
 										<InputGroupText><i className='fas fa-dollar-sign'></i></InputGroupText>
 									</InputGroupAddon>
@@ -135,7 +138,7 @@ class AccountForm extends Component {
 								<Label>Faz parte do orçamento</Label>
 							</Col>
 							<Col xs="12" md="2">
-								<AppSwitch name='budget' color={'success'} label checked={!!this.state.account.budget} onChange={this.handleChange} />
+								<AppSwitch name='budget' color={'success'} label checked={account.budget} onChange={this.handleChange} />
 							</Col>
 						</FormGroup>
 					</Form>
