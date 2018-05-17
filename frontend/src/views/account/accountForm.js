@@ -8,7 +8,7 @@ import { toast } from "react-toastify";
 import { Col, Card, CardHeader, CardBody, CardFooter, Form, FormGroup, Input, InputGroup, InputGroupAddon, InputGroupText, Button, Label } from 'reactstrap'
 import { AppSwitch } from '@coreui/react'
 
-import { update, create, handleChange } from './accountActions'
+import { update, create, handleChange, resetAccount } from './accountActions'
 
 const IconOption = (props) => <div key={props.children} style={{ padding: '2px' }} {...props.innerProps}><i className={props.children}></i></div>
 
@@ -34,34 +34,18 @@ const typeOptions = [
 class AccountForm extends Component {
 	constructor(props) {
 		super(props)
-		this.handleTypeChange = this.handleTypeChange.bind(this)
-		this.handleColorChange = this.handleColorChange.bind(this)
-		this.handleIconChange = this.handleIconChange.bind(this)
 		this.handleSubmit = this.handleSubmit.bind(this)
+		this.back = this.back.bind(this)
 	}
 	converToObject(value, options) {
 		return options.find(option => option.value === value)
 	}
-	handleTypeChange(option) {
+	handleChange(name, option) {
+		console.log(name)
+		console.log(option)
 		this.props.handleChange({
 			target: {
-				name: 'type',
-				value: option.value
-			}
-		})
-	}
-	handleColorChange(option) {
-		this.props.handleChange({
-			target: {
-				name: 'color',
-				value: option.value
-			}
-		})
-	}
-	handleIconChange(option) {
-		this.props.handleChange({
-			target: {
-				name: 'icon',
+				name: name,
 				value: option.value
 			}
 		})
@@ -76,6 +60,10 @@ class AccountForm extends Component {
 			this.props.create(account)
 			toast.success('Conta inserida com sucesso');
 		}
+	}
+	back() {
+		this.props.resetAccount()
+		this.props.history.goBack()
 	}
 	render() {
 		const account = this.props.account
@@ -92,14 +80,14 @@ class AccountForm extends Component {
 							</Col>
 							<Col xs='6' md='2'>
 								<Select value={this.converToObject(account.color, colorOptions)}
-									onChange={this.handleColorChange}
+									onChange={this.handleChange.bind(this, 'color')}
 									options={colorOptions}
 									components={{ Option: IconOption, SingleValue: IconOption }}
 								/>
 							</Col>
 							<Col xs='6' md='2'>
 								<Select value={this.converToObject(account.icon, iconOptions)}
-									onChange={this.handleIconChange}
+									onChange={this.handleChange.bind(this, 'icone')}
 									options={iconOptions}
 									components={{ Option: IconOption, SingleValue: IconOption }}
 								/>
@@ -123,7 +111,9 @@ class AccountForm extends Component {
 								<Label>Tipo</Label>
 							</Col>
 							<Col xs='12' md='10'>
-								<Select value={this.converToObject(account.type, typeOptions)} onChange={this.handleTypeChange} options={typeOptions} />
+								<Select value={this.converToObject(account.type, typeOptions)}
+									onChange={this.handleChange.bind(this, 'type')}
+									options={typeOptions} />
 							</Col>
 						</FormGroup>
 						<FormGroup row>
@@ -167,7 +157,7 @@ class AccountForm extends Component {
 						<i className={'fas fa-save fa-fw'}></i>
 						<span className='btn-label'>Salvar</span>
 					</Button>
-					<Button color='secundary' size='sm' onClick={() => this.props.history.goBack()}>
+					<Button color='secundary' size='sm' onClick={this.back}>
 						<i className={'fas fa-undo fa-fw'}></i>
 						<span className='btn-label'>Voltar</span>
 					</Button>
@@ -178,6 +168,6 @@ class AccountForm extends Component {
 }
 
 const mapStateToProps = state => ({ account: state.accountStore.account })
-const mapDispatchToProps = dispatch => bindActionCreators({ update, create, handleChange }, dispatch)
+const mapDispatchToProps = dispatch => bindActionCreators({ update, create, handleChange, resetAccount }, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(AccountForm)

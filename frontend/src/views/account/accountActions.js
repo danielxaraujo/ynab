@@ -22,7 +22,7 @@ export const ACCOUNT_CREATE = 'ACCOUNT_CREATE';
 export const ACCOUNT_DELETE = 'ACCOUNT_DELETE';
 export const ACCOUNT_HANDLER = 'ACCOUNT_HANDLER';
 export const ACCOUNT_SELECT = 'ACCOUNT_SELECT';
-export const ACCOUNT_NEW = 'ACCOUNT_NEW';
+export const ACCOUNT_RESET = 'ACCOUNT_RESET';
 
 export const search = () => {
 	const response = authFetch(URL)
@@ -50,6 +50,6 @@ export const select = account => {
 	return { type: ACCOUNT_SELECT, payload: { data: { ...account } } }
 }
 
-export const newAccount = () => {
-	return { type: ACCOUNT_NEW, payload: { data: { budget: false } } }
+export const resetAccount = () => {
+	return { type: ACCOUNT_RESET }
 }

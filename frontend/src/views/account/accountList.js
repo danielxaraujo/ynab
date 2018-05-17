@@ -6,7 +6,7 @@ import { AppSwitch } from '@coreui/react'
 import { Card, CardHeader, CardBody, CardFooter, Table, ButtonGroup, Button } from 'reactstrap'
 import Swal from 'sweetalert2'
 
-import { search, select, newAccount } from './accountActions'
+import { search, select } from './accountActions'
 
 class AccountList extends Component {
 	constructor(props) {
@@ -22,7 +22,6 @@ class AccountList extends Component {
 		this.props.search()
 	}
 	create() {
-		this.props.newAccount()
 		this.props.history.push('/account/create')
 	}
 	update(account) {
@@ -110,6 +109,6 @@ class AccountList extends Component {
 }
 
 const mapStateToProps = state => ({ accounts: state.accountStore.accounts })
-const mapDispatchToProps = dispatch => bindActionCreators({ search, select, newAccount }, dispatch)
+const mapDispatchToProps = dispatch => bindActionCreators({ search, select }, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(AccountList)
