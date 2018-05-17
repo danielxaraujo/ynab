@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Form, Button, Card, CardBody, CardGroup, Col, Container, Input, InputGroup, InputGroupAddon, InputGroupText, Row } from 'reactstrap';
 import AuthService from '../../components/authService'
 
-const authService = new AuthService('http://127.0.0.1:3000');
+const authService = new AuthService('http://127.0.0.1:3001');
 
 class Login extends Component {
     constructor(props) {

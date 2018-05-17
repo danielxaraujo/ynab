@@ -1,8 +1,12 @@
 import React, { Component } from 'react'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux';
+
 import { Col, Card, CardHeader, CardBody, CardFooter, Form, FormGroup, FormText, FormFeedback, ButtonGroup, Input, InputGroup, InputGroupAddon, InputGroupText, Button, Label } from 'reactstrap'
 import { AppSwitch } from '@coreui/react'
 import Select from 'react-select'
 import Swal from 'sweetalert2'
+import { update, create } from './accountActions'
 
 const IconOption = (props) => <div key={props.children} style={{ padding: '2px' }} {...props.innerProps}><i className={props.children}></i></div>
 
@@ -28,63 +32,50 @@ const typeOptions = [
 class AccountForm extends Component {
 	constructor(props) {
 		super(props)
-		this.state = { account: { budget: false } }
 		this.handleChange = this.handleChange.bind(this)
 		this.handleTypeChange = this.handleTypeChange.bind(this)
 		this.handleColorChange = this.handleColorChange.bind(this)
 		this.handleIconChange = this.handleIconChange.bind(this)
 		this.handleSubmit = this.handleSubmit.bind(this)
 	}
-	componentDidMount() {
-		if (this.props.location.state != null) {
-			this.setState(this.props.location.state)
-		}
-	}
 	handleChange(event) {
 		const target = event.target
 		const value = target.type === 'checkbox' ? target.checked : target.value
 		const name = target.name
-		this.setState({ account: { ...this.state.account, [name]: value } })
+		this.setState({ account: { ...this.props.account, [name]: value } })
 	}
 	handleTypeChange(option) {
-		this.setState({ account: { ...this.state.account, type: option.value } })
+		//this.setState({ account: { ...this.props.account, type: option.value } })
 	}
 	handleColorChange(option) {
-		this.setState({ account: { ...this.state.account, color: option.value } })
+		//this.setState({ account: { ...this.props.account, color: option.value } })
 	}
 	handleIconChange(option) {
-		this.setState({ account: { ...this.state.account, icon: option.value } })
+		//this.setState({ account: { ...this.props.account, icon: option.value } })
 	}
 	converToObject(value, options) {
 		return options.find(option => option.value === value)
 	}
 	handleSubmit(event) {
 		event.preventDefault()
-		var url = 'api/account'
-		var method = 'POST'
-		if (this.state.account._id) {
-			url = `${url}/${this.state.account._id}`
-			method = 'PUT'
+		const account =this.props.account
+		if (account._id) {
+			this.props.update(account)
+			Swal('Conta atualizada com sucesso', '', 'success');
+		} else {
+			this.props.create(account)
+			Swal('Conta inserida com sucesso', '', 'success');
 		}
-		this.props.fetch(url, { method: method, body: JSON.stringify(this.state.account) }).then(json => {
-			if (this.state.account._id) {
-				Swal('Conta atualizada com sucesso', '', 'success');
-			} else {
-				Swal('Conta inserida com sucesso', '', 'success');
-			}
-			this.setState({ account: json.data })
-
-		}).catch(err => Swal('Oops...', JSON.stringify(this.state.account), 'error'))
 	}
 	render() {
-		const { account } = this.state
+		const { account } = this.props.account
 		return (
 			<Card className='app-card'>
 				<CardHeader className='app-card-header'>
 					Nova Conta
 				</CardHeader>
 				<CardBody>
-					<Form className='form-horizontal'>
+					<Form className='form-horizontal' onSubmit={this.handleSubmit}>
 						<FormGroup row>
 							<Col xs='12' md='2'>
 								<Label>Icone e Cor</Label>
@@ -176,4 +167,7 @@ class AccountForm extends Component {
 	}
 }
 
-export default AccountForm
+const mapStateToProps = (state, ownProps) => ({ account: ownProps.location.state })
+const mapDispatchToProps = dispatch => bindActionCreators({ update, create }, dispatch)
+
+export default connect(mapStateToProps, mapDispatchToProps)(AccountForm)

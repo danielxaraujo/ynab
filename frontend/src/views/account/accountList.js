@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux';
+
 import { AppSwitch } from '@coreui/react'
 import { Card, CardHeader, CardBody, CardFooter, Table, ButtonGroup, Button } from 'reactstrap'
 import Swal from 'sweetalert2'
+
+import { search, selectAction } from './accountActions'
 
 class AccountList extends Component {
 	constructor(props) {
@@ -13,11 +18,8 @@ class AccountList extends Component {
 		this.delete = this.delete.bind(this)
 		this.prepareDelete = this.prepareDelete.bind(this)
 	}
-	componentDidMount() {
-		this.search()
-	}
 	search() {
-		this.props.fetch('api/account').then(json => this.setState({ accounts: json.data }))
+		this.props.search()
 	}
 	create() {
 		this.props.history.push('/account/create')
@@ -50,7 +52,8 @@ class AccountList extends Component {
 
 	}
 	render() {
-		return (
+		const accounts = this.props.accounts
+		return accounts ? (
 			<Card className='app-card'>
 				<CardHeader className='app-card-header'>
 					Lista de Contas
@@ -70,7 +73,7 @@ class AccountList extends Component {
 							</tr>
 						</thead>
 						<tbody>
-							{this.state.accounts.map((account, idx) => {
+							{accounts.map((account, idx) => {
 								return (
 									<tr key={idx}>
 										<td><i className={`${account.icon} ${account.color} fa-lg`}></i></td>
@@ -100,8 +103,11 @@ class AccountList extends Component {
 					</Button>
 				</CardFooter>
 			</Card>
-		)
+		) : null
 	}
 }
 
-export default AccountList
+const mapStateToProps = state => ({ accounts: state.accountStore.accounts })
+const mapDispatchToProps = dispatch => bindActionCreators({ search, selectAction }, dispatch)
+
+export default connect(mapStateToProps, mapDispatchToProps)(AccountList)

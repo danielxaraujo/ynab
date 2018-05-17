@@ -4,7 +4,7 @@ const allowCors = require('cors')
 const express = require('express')
 const server = express()
 
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 3001
 const database = require('./config/database')
 const { oapi, api } = require('./config/router')
 
