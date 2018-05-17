@@ -58,7 +58,7 @@ class AccountForm extends Component {
 	}
 	handleSubmit(event) {
 		event.preventDefault()
-		const account =this.props.account
+		const account = this.props.account
 		if (account._id) {
 			this.props.update(account)
 			Swal('Conta atualizada com sucesso', '', 'success');
@@ -68,7 +68,7 @@ class AccountForm extends Component {
 		}
 	}
 	render() {
-		const { account } = this.props.account
+		const account = this.props.account
 		return (
 			<Card className='app-card'>
 				<CardHeader className='app-card-header'>
@@ -167,7 +167,7 @@ class AccountForm extends Component {
 	}
 }
 
-const mapStateToProps = (state, ownProps) => ({ account: ownProps.location.state })
+const mapStateToProps = state => ({ account: state.accountStore.account })
 const mapDispatchToProps = dispatch => bindActionCreators({ update, create }, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(AccountForm)

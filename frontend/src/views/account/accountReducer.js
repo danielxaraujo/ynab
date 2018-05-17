@@ -1,6 +1,6 @@
-import { ACCOUNT_SEARCH, ACCOUNT_UPDATE, ACCOUNT_CREATE, ACCOUNT_HANDLER } from './accountActions'
+import { ACCOUNT_SEARCH, ACCOUNT_UPDATE, ACCOUNT_CREATE, ACCOUNT_HANDLER, ACCOUNT_SELECT } from './accountActions'
 
-const initialState = { accounts: [], accountSelected: null }
+const initialState = { accounts: [], account: { budget: false} }
 
 export default function (state = initialState, action) {
 	switch (action.type) {
@@ -12,18 +12,23 @@ export default function (state = initialState, action) {
 		case ACCOUNT_UPDATE:
 			return {
 				...state,
-				accountSelected: action.payload.data
+				account: action.payload.data
 			};
 		case ACCOUNT_CREATE:
 			return {
 				...state,
-				accountSelected: action.payload.data
+				account: action.payload.data
 			};
-		case ACCOUNT_HANDLER:
-			state.accountSelected.nome = action.payload.data
+		case ACCOUNT_SELECT:
 			return {
 				...state,
-				accountSelected: state.accountSelected
+				account: action.payload
+			};
+		case ACCOUNT_HANDLER:
+			state.account.nome = action.payload.data
+			return {
+				...state,
+				account: state.account
 			};
 		default:
 			return state;

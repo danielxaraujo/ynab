@@ -14,6 +14,7 @@ export const ACCOUNT_UPDATE = 'ACCOUNT_UPDATE';
 export const ACCOUNT_CREATE = 'ACCOUNT_CREATE';
 export const ACCOUNT_HANDLER = 'ACCOUNT_CREATE';
 export const ACCOUNT_SELECT = 'ACCOUNT_SELECT';
+export const ACCOUNT_NEW = 'ACCOUNT_NEW';
 
 export const search = () => {
     const response = authFetch(URL)
@@ -27,11 +28,10 @@ export const update = account => {
     const id = account._id
     delete account._id
     const response = authFetch(`${URL}/${id}`, { method: 'PUT', body: JSON.stringify(account) })
-    console.log(JSON.stringify(account))
-    return {
+    return [{
         type: ACCOUNT_UPDATE,
         payload: response
-    }
+    }, search()]
 }
 
 export const create = account => {
@@ -50,9 +50,16 @@ export const handleChange = event => {
     }
 }
 
-export const selectAction = account => {
+export const select = account => {
     return {
         type: ACCOUNT_SELECT,
         payload: account
+    }
+}
+
+export const newAccount = () => {
+    return {
+        type: ACCOUNT_NEW,
+        payload: { budget: false }
     }
 }
