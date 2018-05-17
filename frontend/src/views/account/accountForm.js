@@ -2,10 +2,12 @@ import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux';
 
+import Select from 'react-select'
+import { toast } from "react-toastify";
+
 import { Col, Card, CardHeader, CardBody, CardFooter, Form, FormGroup, FormText, FormFeedback, ButtonGroup, Input, InputGroup, InputGroupAddon, InputGroupText, Button, Label } from 'reactstrap'
 import { AppSwitch } from '@coreui/react'
-import Select from 'react-select'
-import Swal from 'sweetalert2'
+
 import { update, create, handleChange } from './accountActions'
 
 const IconOption = (props) => <div key={props.children} style={{ padding: '2px' }} {...props.innerProps}><i className={props.children}></i></div>
@@ -69,10 +71,10 @@ class AccountForm extends Component {
 		const account = this.props.account
 		if (account._id) {
 			this.props.update(account)
-			Swal('Conta atualizada com sucesso', '', 'success');
+			toast.success('Conta atualizada com sucesso');
 		} else {
 			this.props.create(account)
-			Swal('Conta inserida com sucesso', '', 'success');
+			toast.success('Conta inserida com sucesso');
 		}
 	}
 	render() {

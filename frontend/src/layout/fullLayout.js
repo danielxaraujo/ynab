@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Redirect, Route, Switch } from 'react-router-dom'
 import { AppHeader, AppFooter } from '@coreui/react'
+import { ToastContainer } from "react-toastify";
 
 import routes from '../router'
 
@@ -14,6 +15,7 @@ class FullLayout extends Component {
 	render() {
 		return (
 			<div className='app'>
+				<ToastContainer />
 				<AppHeader fixed>
 					<Header {...this.props} />
 				</AppHeader>

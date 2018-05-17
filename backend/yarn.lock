@@ -1776,12 +1776,6 @@ node-pre-gyp@^0.9.0:
     semver "^5.3.0"
     tar "^4"
 
-node-restful@^0.2.6:
-  version "0.2.6"
-  resolved "https://registry.yarnpkg.com/node-restful/-/node-restful-0.2.6.tgz#42ab3adc8c1a5f94ed864799845f8efe311e632e"
-  dependencies:
-    underscore "1.8.3"
-
 nodemon@^1.17.4:
   version "1.17.4"
   resolved "https://registry.yarnpkg.com/nodemon/-/nodemon-1.17.4.tgz#243ff9c69ffbf1175f2460f9b023f35a072c15e9"
@@ -2666,10 +2660,6 @@ undefsafe@^2.0.2:
   resolved "https://registry.yarnpkg.com/undefsafe/-/undefsafe-2.0.2.tgz#225f6b9e0337663e0d8e7cfd686fc2836ccace76"
   dependencies:
     debug "^2.2.0"
-
-underscore@1.8.3:
-  version "1.8.3"
-  resolved "https://registry.yarnpkg.com/underscore/-/underscore-1.8.3.tgz#4f3fb53b106e6097fcf9cb4109f2a5e9bdfa5022"
 
 union-value@^1.0.0:
   version "1.0.0"
