@@ -1,4 +1,4 @@
-import { ACCOUNT_SEARCH, ACCOUNT_UPDATE, ACCOUNT_CREATE, ACCOUNT_HANDLER, ACCOUNT_SELECT } from './accountActions'
+import { ACCOUNT_SEARCH, ACCOUNT_UPDATE, ACCOUNT_CREATE, ACCOUNT_HANDLER, ACCOUNT_SELECT, ACCOUNT_NEW } from './accountActions'
 
 const initialState = { accounts: [], account: { budget: false} }
 
@@ -20,6 +20,11 @@ export default function (state = initialState, action) {
 				account: action.payload.data
 			};
 		case ACCOUNT_SELECT:
+			return {
+				...state,
+				account: action.payload
+			};
+		case ACCOUNT_NEW:
 			return {
 				...state,
 				account: action.payload
