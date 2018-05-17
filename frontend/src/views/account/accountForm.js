@@ -6,7 +6,7 @@ import { Col, Card, CardHeader, CardBody, CardFooter, Form, FormGroup, FormText,
 import { AppSwitch } from '@coreui/react'
 import Select from 'react-select'
 import Swal from 'sweetalert2'
-import { update, create } from './accountActions'
+import { update, create, handleChange } from './accountActions'
 
 const IconOption = (props) => <div key={props.children} style={{ padding: '2px' }} {...props.innerProps}><i className={props.children}></i></div>
 
@@ -32,29 +32,37 @@ const typeOptions = [
 class AccountForm extends Component {
 	constructor(props) {
 		super(props)
-		this.handleChange = this.handleChange.bind(this)
 		this.handleTypeChange = this.handleTypeChange.bind(this)
 		this.handleColorChange = this.handleColorChange.bind(this)
 		this.handleIconChange = this.handleIconChange.bind(this)
 		this.handleSubmit = this.handleSubmit.bind(this)
 	}
-	handleChange(event) {
-		const target = event.target
-		const value = target.type === 'checkbox' ? target.checked : target.value
-		const name = target.name
-		this.setState({ account: { ...this.props.account, [name]: value } })
-	}
-	handleTypeChange(option) {
-		//this.setState({ account: { ...this.props.account, type: option.value } })
-	}
-	handleColorChange(option) {
-		//this.setState({ account: { ...this.props.account, color: option.value } })
-	}
-	handleIconChange(option) {
-		//this.setState({ account: { ...this.props.account, icon: option.value } })
-	}
 	converToObject(value, options) {
 		return options.find(option => option.value === value)
+	}
+	handleTypeChange(option) {
+		this.props.handleChange({
+			target: {
+				name: 'type',
+				value: option.value
+			}
+		})
+	}
+	handleColorChange(option) {
+		this.props.handleChange({
+			target: {
+				name: 'color',
+				value: option.value
+			}
+		})
+	}
+	handleIconChange(option) {
+		this.props.handleChange({
+			target: {
+				name: 'icon',
+				value: option.value
+			}
+		})
 	}
 	handleSubmit(event) {
 		event.preventDefault()
@@ -101,7 +109,7 @@ class AccountForm extends Component {
 							</Col>
 							<Col xs='12' md='10'>
 								<InputGroup className='input-prepend'>
-									<Input name='name' type='text' value={account.name || ''} onChange={this.handleChange} placeholder='Nome da Conta' />
+									<Input name='name' type='text' value={account.name || ''} onChange={this.props.handleChange} placeholder='Nome da Conta' />
 									<InputGroupAddon addonType='append'>
 										<InputGroupText>@</InputGroupText>
 									</InputGroupAddon>
@@ -122,7 +130,7 @@ class AccountForm extends Component {
 							</Col>
 							<Col xs='12' md='10'>
 								<InputGroup className='input-prepend'>
-									<Input name='date' type='text' value={account.date || ''} onChange={this.handleChange} placeholder='99/99/9999' />
+									<Input name='date' type='text' value={account.date || ''} onChange={this.props.handleChange} placeholder='99/99/9999' />
 									<InputGroupAddon addonType='append'>
 										<InputGroupText><i className='far fa-calendar-alt'></i></InputGroupText>
 									</InputGroupAddon>
@@ -135,7 +143,7 @@ class AccountForm extends Component {
 							</Col>
 							<Col xs='12' md='10'>
 								<InputGroup className='input-prepend'>
-									<Input name='balance' type='text' value={account.balance || ''} onChange={this.handleChange} placeholder='Valor do Saldo Inicial' />
+									<Input name='balance' type='text' value={account.balance || ''} onChange={this.props.handleChange} placeholder='Valor do Saldo Inicial' />
 									<InputGroupAddon addonType='append'>
 										<InputGroupText><i className='fas fa-dollar-sign'></i></InputGroupText>
 									</InputGroupAddon>
@@ -147,7 +155,7 @@ class AccountForm extends Component {
 								<Label>Faz parte do orçamento</Label>
 							</Col>
 							<Col xs='12' md='2'>
-								<AppSwitch key={account.budget} name='budget' label color={'success'} checked={account.budget} onChange={this.handleChange} />
+								<AppSwitch key={account.budget} name='budget' label color={'success'} checked={account.budget} onChange={this.props.handleChange} />
 							</Col>
 						</FormGroup>
 					</Form>
@@ -168,6 +176,6 @@ class AccountForm extends Component {
 }
 
 const mapStateToProps = state => ({ account: state.accountStore.account })
-const mapDispatchToProps = dispatch => bindActionCreators({ update, create }, dispatch)
+const mapDispatchToProps = dispatch => bindActionCreators({ update, create, handleChange }, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(AccountForm)

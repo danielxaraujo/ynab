@@ -66,23 +66,23 @@ class AccountList extends Component {
 				<CardBody className='app-card-body'>
 					<Table className='app-card-table' responsive striped>
 						<thead>
-							<tr>
-								<th>Icon</th>
-								<th>Name</th>
-								<th>Type</th>
-								<th>Budget</th>
-								<th></th>
+							<tr className='d-flex'>
+								<th className='text-center col-1'>Icon</th>
+								<th className='col-7'>Name</th>
+								<th className='col-2'>Type</th>
+								<th className='text-center col-1'>Budget</th>
+								<th className='text-center col-1'>Actions</th>
 							</tr>
 						</thead>
 						<tbody>
 							{accounts.map((account, idx) => {
 								return (
-									<tr key={idx}>
-										<td><i className={`${account.icon} ${account.color} fa-lg`}></i></td>
-										<td>{account.name}</td>
-										<td>{account.type}</td>
-										<td><AppSwitch label color={'success'} checked={!!account.budget} disabled /></td>
-										<td>
+									<tr key={idx} className='d-flex'>
+										<td className='text-center col-1'><i className={`${account.icon} ${account.color} fa-lg`}></i></td>
+										<td className='col-7'>{account.name}</td>
+										<td className='col-2'>{account.type}</td>
+										<td className='text-center col-1'><AppSwitch label color={'success'} checked={!!account.budget} disabled /></td>
+										<td className='text-center col-1'>
 											<ButtonGroup>
 												<Button size='sm' color='success' onClick={() => this.update(account)}>
 													<i className={'fas fa-edit'}></i>
