@@ -15,7 +15,6 @@ import '@coreui/coreui/dist/css/bootstrap.min.css'
 import '@coreui/coreui/dist/css/coreui.min.css'
 
 // Application Styles
-import 'react-select/dist/react-select.css'
 import 'sweetalert2/dist/sweetalert2.min.css'
 import 'react-toastify/dist/ReactToastify.css';
 import './App.css'

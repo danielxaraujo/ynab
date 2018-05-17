@@ -19,7 +19,6 @@ export default function (state = initialState, action) {
 				account: action.payload.data
 			};
 		case ACCOUNT_HANDLER:
-			console.log('Deu certo')
 			return {
 				...state,
 				account: {

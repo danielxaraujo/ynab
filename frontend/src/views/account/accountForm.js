@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import Select from 'react-select'
 import { toast } from "react-toastify";
 
-import { Col, Card, CardHeader, CardBody, CardFooter, Form, FormGroup, FormText, FormFeedback, ButtonGroup, Input, InputGroup, InputGroupAddon, InputGroupText, Button, Label } from 'reactstrap'
+import { Col, Card, CardHeader, CardBody, CardFooter, Form, FormGroup, Input, InputGroup, InputGroupAddon, InputGroupText, Button, Label } from 'reactstrap'
 import { AppSwitch } from '@coreui/react'
 
 import { update, create, handleChange } from './accountActions'
