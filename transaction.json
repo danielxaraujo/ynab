@@ -1,34 +1,41 @@
-[{
-        "_id": ObjectId("5af4af6df430d62b4c812890"),
-        "name": "Conta Corrente BB",
-        "date": ISODate("2018-01-01T00:00:00.000Z"),
-        "balance": 5000,
-        "type": "CHECKING",
-        "budget": true,
-        "icon": "fas fa-money-check",
-        "color": "success",
-        "__v": 0
-    },
-    {
-        "_id": ObjectId("5af4b1546c90401ec00b8ac2"),
-        "name": "Cartão de Crédito BB",
-        "date": ISODate("2018-01-01T00:00:00.000Z"),
-        "balance": 1750.5,
-        "type": "CREDCARD",
-        "budget": true,
-        "icon": "fas fa-credit-card",
-        "color": "warning",
-        "__v": 0
-    },
-    {
-        "_id": ObjectId("5afa08ce9d307f1e28197160"),
-        "name": "Poupança BB",
-        "date": ISODate("2018-01-01T00:00:00.000Z"),
-        "balance": 35000,
-        "type": "SAVINGS",
-        "budget": false,
-        "icon": "fas fa-piggy-bank",
-        "color": "danger",
-        "__v": 0
-    }
-]
+/* 1 */
+{
+    "_id": ObjectId("5afeea9aecb9670ecd9dea43"),
+    "check": "000001245842",
+    "memo": "Pagamento do cartão",
+    "flag": "success",
+    "payee": "",
+    "category": "Transfer to Cartão de Crédito BB",
+    "value": "3550.85",
+    "date": "2018-01-01",
+    "cleared": "true",
+    "accountId": ObjectId("5af4af6df430d62b4c812890")
+}
+
+/* 2 */
+{
+    "_id": ObjectId("5aff2052ecb9670ecd9e5d82"),
+    "check": "000032452215",
+    "memo": "Pagamento Telefone: Vivo",
+    "flag": "",
+    "payee": "Vivo",
+    "category": "Gastos Mensais -> Telefone",
+    "value": "269.90",
+    "date": "2018-01-01",
+    "cleared": "false",
+    "accountId": ObjectId("5af4af6df430d62b4c812890")
+}
+
+/* 3 */
+{
+    "_id": ObjectId("5aff20deecb9670ecd9e5daa"),
+    "check": "000000548612",
+    "memo": "Outback",
+    "flag": "danger",
+    "payee": "Outback",
+    "category": "Gastos Diários -> Restaurantes",
+    "value": "195.56",
+    "date": "2018-01-01",
+    "cleared": "true",
+    "accountId": ObjectId("5af4af6df430d62b4c812890")
+}
