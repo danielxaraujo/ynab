@@ -1,32 +1,31 @@
-.app-main,
-.app-container {
-	background-color: #BFCFD4
+svg {
+	margin-right: 5px !important
 }
 
-.app-card {
+.card-list {
+	padding: 0px !important;
+	margin: 0px !important;
 	border-radius: 1rem !important
 }
 
-.app-card-body,
-.app-card-table {
-	padding: 0px !important;
-	margin: 0px !important;
-}
-
-.app-card-table thead th {
-	border-top: none !important;
-}
-
-.app-card-header {
+.card-list .card-header {
 	border-radius: 1rem 1rem 0rem 0rem !important
 }
 
-.app-card-footer {
-	border-radius: 0rem 0rem 1rem 1rem !important
+.card-list .card-body {
+	padding: 0px !important;
 }
 
-.btn-label {
-	padding-left: 5px !important
+.card-list .card-body table {
+	margin: 0px !important;
+}
+
+.card-list .card-body table th {
+	border: 0px !important;
+}
+
+.card-list .card-footer {
+	border-radius: 0rem 0rem 1rem 1rem !important
 }
 
 .success {

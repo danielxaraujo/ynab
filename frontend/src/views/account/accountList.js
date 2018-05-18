@@ -54,16 +54,16 @@ class AccountList extends Component {
 	}
 	render() {
 		const accounts = this.props.accounts
-		return accounts ? (
-			<Card className='app-card'>
-				<CardHeader className='app-card-header'>
+		return (
+			<Card className='card-list'>
+				<CardHeader>
 					Lista de Contas
-						<div className='card-header-actions'>
+					<div className='card-header-actions'>
 						<a className='card-header-action btn' onClick={this.search}><i id='search' className='fas fa-sync-alt'></i></a>
 					</div>
 				</CardHeader>
-				<CardBody className='app-card-body'>
-					<Table className='app-card-table' responsive striped>
+				<CardBody>
+					<Table responsive striped>
 						<thead>
 							<tr className='d-flex'>
 								<th className='text-center col-1'>Icon</th>
@@ -104,7 +104,7 @@ class AccountList extends Component {
 					</Button>
 				</CardFooter>
 			</Card>
-		) : null
+		)
 	}
 }
 
