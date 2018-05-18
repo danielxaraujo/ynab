@@ -1,0 +1,34 @@
+[{
+        "_id": ObjectId("5af4af6df430d62b4c812890"),
+        "name": "Conta Corrente BB",
+        "date": ISODate("2018-01-01T00:00:00.000Z"),
+        "balance": 5000,
+        "type": "CHECKING",
+        "budget": true,
+        "icon": "fas fa-money-check",
+        "color": "success",
+        "__v": 0
+    },
+    {
+        "_id": ObjectId("5af4b1546c90401ec00b8ac2"),
+        "name": "Cartão de Crédito BB",
+        "date": ISODate("2018-01-01T00:00:00.000Z"),
+        "balance": 1750.5,
+        "type": "CREDCARD",
+        "budget": true,
+        "icon": "fas fa-credit-card",
+        "color": "warning",
+        "__v": 0
+    },
+    {
+        "_id": ObjectId("5afa08ce9d307f1e28197160"),
+        "name": "Poupança BB",
+        "date": ISODate("2018-01-01T00:00:00.000Z"),
+        "balance": 35000,
+        "type": "SAVINGS",
+        "budget": false,
+        "icon": "fas fa-piggy-bank",
+        "color": "danger",
+        "__v": 0
+    }
+]
