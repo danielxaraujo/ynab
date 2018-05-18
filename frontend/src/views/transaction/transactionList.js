@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux';
 
-import { Card, CardHeader, CardBody, CardFooter, Table, ButtonGroup, Button } from 'reactstrap'
+import { Card, CardHeader, CardBody, CardFooter, Table, thead, ButtonGroup, Button } from 'reactstrap'
 
 import { search } from './transactionActions'
 
@@ -33,33 +33,33 @@ class TransactionList extends Component {
 					</div>
 				</CardHeader>
 				<CardBody>
-					<Table responsive striped>
-						<thead>
-							<tr className='d-flex'>
-								<th className='text-center col-1'>Check</th>
-								<th className='text-center col-1'>Flag</th>
-								<th className='text-center col-1'>Date</th>
-								<th className='col-1'>Payee</th>
-								<th className='col-1'>Category</th>
-								<th className='col-4'>Memo</th>
-								<th className='col-1'>Value</th>
-								<th className='text-center col-1'>Cleared</th>
-								<th className='text-center col-1'></th>
+					<Table striped hover>
+						<thead style={{ display: 'grid-inline' }}>
+							<tr style={{ display: 'grid', gridTemplateColumns: '124px 44px 124px 4fr 6fr 10fr 104px 44px 84px' }}>
+								<th className='text-center'>Check</th>
+								<th className='text-center'><i className={`fas fa-bookmark fa-rotate-270 fa-lg text-muted`} /></th>
+								<th className='text-center'>Date</th>
+								<th>Payee</th>
+								<th>Category</th>
+								<th>Memo</th>
+								<th>Value</th>
+								<th className='text-center'><i className={`fas fa-copyright text-muted'} fa-lg`} /></th>
+								<th className='text-center'></th>
 							</tr>
 						</thead>
 						<tbody>
 							{transactions.map((transaction, idx) => {
 								return (
-									<tr key={idx} className='d-flex'>
-										<td className='text-center col-1'>{transaction.check}</td>
-										<td className='text-center col-1'><i className={`fas fa-bookmark fa-rotate-270 text-${transaction.flag} fa-lg`} /></td>
-										<td className='text-center col-1'>{transaction.date}</td>
-										<td className='col-1'>{transaction.payee}</td>
-										<td className='col-1'>{transaction.category}</td>
-										<td className='col-4'>{transaction.memo}</td>
-										<td className='col-1'>{transaction.value}</td>
-										<td className='text-center col-1'><i className={`fas fa-copyright text-${transaction.cleared ? 'success' : 'muted'} fa-lg`} /></td>
-										<td className='text-center col-1'>
+									<tr key={idx} style={{ display: 'grid', gridTemplateColumns: '124px 44px 124px 4fr 6fr 10fr 104px 44px 84px' }}>
+										<td className='text-center'>{transaction.check}</td>
+										<td className='text-center'><i className={`fas fa-bookmark fa-rotate-270 fa-lg text-${transaction.flag == '' ? 'muted' : transaction.flag}`} /></td>
+										<td className='text-center'>{transaction.date.split('T')[0]}</td>
+										<td>{transaction.payee}</td>
+										<td>{transaction.category}</td>
+										<td>{transaction.memo}</td>
+										<td>R$ {transaction.value}</td>
+										<td className='text-center'><i className={`fas fa-copyright text-${transaction.cleared ? 'success' : 'muted'} fa-lg`} /></td>
+										<td className='text-center'>
 											<ButtonGroup>
 												<Button size='sm' color='success' onClick={() => this.update(transaction)}>
 													<i className='fas fa-edit'></i>
