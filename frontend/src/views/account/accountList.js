@@ -84,10 +84,10 @@ class AccountList extends Component {
 										<td className='text-center col-1'>
 											<ButtonGroup>
 												<Button size='sm' color='success' onClick={() => this.update(account)}>
-													<i className={'fas fa-edit'}></i>
+													<i className='fas fa-edit'></i>
 												</Button>
 												<Button size='sm' color='danger' onClick={() => this.prepareDelete(account)}>
-													<i className={'fas fa-trash-alt'}></i>
+													<i className='fas fa-trash-alt'></i>
 												</Button>
 											</ButtonGroup>
 										</td>
@@ -99,8 +99,7 @@ class AccountList extends Component {
 				</CardBody>
 				<CardFooter className='app-card-footer d-flex flex-row-reverse'>
 					<Button color='success' size='sm' onClick={this.create}>
-						<i className='fas fa-plus-circle'></i>
-						<span className='btn-label'>Adicionar</span>
+						<i className='fas fa-plus-circle'></i> Adicionar
 					</Button>
 				</CardFooter>
 			</Card>

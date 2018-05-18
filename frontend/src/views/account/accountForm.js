@@ -154,12 +154,10 @@ class AccountForm extends Component {
 				</CardBody>
 				<CardFooter className='app-card-footer'>
 					<Button color='primary' size='sm' onClick={this.handleSubmit}>
-						<i className={'fas fa-save fa-fw'}></i>
-						<span className='btn-label'>Salvar</span>
+						<i className='fas fa-save'></i> Salvar
 					</Button>
 					<Button color='secundary' size='sm' onClick={this.back}>
-						<i className={'fas fa-undo fa-fw'}></i>
-						<span className='btn-label'>Voltar</span>
+						<i className='fas fa-undo'></i> Voltar
 					</Button>
 				</CardFooter>
 			</Card >
