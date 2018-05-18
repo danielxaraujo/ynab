@@ -7,7 +7,7 @@ import { search } from '../views/account/accountActions'
 import navigations from '../navigation';
 
 class Sidebar extends Component {
-	componentDidMount() {
+	componentWillMount() {
 		this.props.search()
 	}
 	injectAccounts() {

@@ -46,7 +46,8 @@ const accountSchema = new mongoose.Schema({
 			'success',
 			'danger',
 			'warning',
-			'info'
+			'info',
+			''
 		],
 		required: true,
 		default: ''

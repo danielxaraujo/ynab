@@ -12,7 +12,7 @@ const withAuth = (Comp, url) => {
 		componentWillReceiveProps() {
 			this.checkIfAuthenticated()
 		}
-		componentDidMount() {
+		componentWillMount() {
 			this.checkIfAuthenticated()
 		}
 		checkIfAuthenticated() {

@@ -8,10 +8,11 @@ import multi from 'redux-multi'
 import promise from 'redux-promise'
 
 import App from './App'
-import { accountReducer } from './reducers';
+import { accountReducer, transactionReducer } from './reducers';
 
 const reducers = combineReducers({
-	accountStore: accountReducer
+	accountStore: accountReducer,
+	transactionStore: transactionReducer
 });
 
 const devTools = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()

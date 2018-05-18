@@ -5,7 +5,7 @@ const createService = (model) => {
 	const router = express.Router()
 
 	const list = function (req, res, next) {
-		model.find({}, (err, data) => {
+		model.find(req.query, (err, data) => {
 			respondOrErr(res, next, 500, err, 200, { data })
 		});
 	}

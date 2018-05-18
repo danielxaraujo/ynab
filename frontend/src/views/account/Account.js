@@ -10,9 +10,9 @@ class Account extends Component {
 		return (
 			<Container fluid>
 				<Switch>
-					<Route path='/account/create' name='New' render={() => <AccountForm {...this.props} />} />
-					<Route path='/account/update' name='Edit' render={() => <AccountForm {...this.props} />} />
-					<Route path='/account/list' name='List' render={() => <AccountList {...this.props} />} />
+					<Route path='/account/create' name='New' component={AccountForm} />
+					<Route path='/account/update' name='Edit' component={AccountForm} />
+					<Route path='/account/list' name='List' component={AccountList} />
 					<Redirect from="/account" to="/account/list" />
 				</Switch>
 			</Container>

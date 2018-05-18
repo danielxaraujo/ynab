@@ -1,7 +1,9 @@
 const mongoose = require('mongoose')
+const Schema = mongoose.Schema
+const ObjectId = Schema.ObjectId
 const model = require('../../util/modelService')
 
-const transactionSchema = new mongoose.Schema({
+const transactionSchema = new Schema({
 	check: {
 		type: String,
 		min: 12,
@@ -19,13 +21,15 @@ const transactionSchema = new mongoose.Schema({
 		type: String,
 		uppercase: true,
 		enum: [
-			'RED',
-			'GREEN',
-			'BLUE',
-			'YELLOW',
-			'NONE'
+			'primary',
+			'secondary',
+			'success',
+			'danger',
+			'warning',
+			'info',
+			''
 		],
-		default: 'NONE',
+		default: '',
 		required: false
 	},
 	payee: {
@@ -48,6 +52,10 @@ const transactionSchema = new mongoose.Schema({
 	cleared: {
 		type: Boolean,
 		default: false,
+		required: false
+	},
+	accountId: {
+		type: ObjectId,
 		required: false
 	}
 })

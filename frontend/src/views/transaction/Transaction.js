@@ -1,42 +1,18 @@
-import React, { Component } from 'react';
-import { Container, Card, CardBody, Table } from 'reactstrap'
+import React, { Component } from 'react'
+import { Switch, Route } from 'react-router-dom'
+import { Container } from 'reactstrap'
+
+import TransactionList from './transactionList'
+import TransactionForm from './transactionForm'
 
 class Transaction extends Component {
-	constructor(props) {
-		super(props)
-		this.state = { transactions: [] }
-	}
-	componentDidMount() {
-		const { match: { params } } = this.props;
-		this.props.fetch('api/transaction/', { accountId: params.id }).then(json => this.setState({ transactions: json.data }))
-	}
 	render() {
 		return (
 			<Container fluid>
-				<Card>
-					<CardBody>
-						<Table responsive striped bordered={false}>
-							<thead>
-								<tr>
-									<th>check</th>
-									<th>memo</th>
-									<th>value</th>
-								</tr>
-							</thead>
-							<tbody>
-								{this.state.transactions.map((transaction, idx) => {
-									return (
-										<tr id={idx}>
-											<td>{transaction.check}</td>
-											<td>{transaction.memo}</td>
-											<td>{transaction.value}</td>
-										</tr>
-									)
-								})}
-							</tbody>
-						</Table>
-					</CardBody>
-				</Card>
+				<Switch>
+					<Route path='/transaction' exact={true} name='Transaction' component={TransactionForm} />
+					<Route path='/transaction/:id' name='Transactions' component={TransactionList} />
+				</Switch>
 			</Container>
 		)
 	}
