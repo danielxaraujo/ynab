@@ -63,7 +63,7 @@ class AccountList extends Component {
 					</div>
 				</CardHeader>
 				<CardBody>
-					<Table responsive striped>
+					<Table responsive borderless striped hover>
 						<thead>
 							<tr className='d-flex'>
 								<th className='text-center col-1'>Icon</th>
